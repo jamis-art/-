@@ -2,12 +2,22 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>測試</title>
+  <title>台語音檔播放器</title>
 </head>
 <body>
-  <h1>成功啦 🎉</h1>
-  <audio controls>
-    <source src="audio/逐家好.m4a" type="audio/mp4">
-  </audio>
+
+<h1>台語音檔測試</h1>
+
+<button onclick="playSound('1.m4a')">播放 1</button>
+<button onclick="playSound('2.m4a')">播放 2</button>
+<button onclick="playSound('3.m4a')">播放 3</button>
+
+<script>
+function playSound(file) {
+  const audio = new Audio(file);
+  audio.play();
+}
+</script>
+
 </body>
 </html>
