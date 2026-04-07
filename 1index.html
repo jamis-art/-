@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>臺語音檔測試</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background: #f5f5f5;
+      padding: 40px;
+    }
+    button {
+      padding: 15px 25px;
+      margin: 10px;
+      font-size: 18px;
+      border-radius: 10px;
+      border: none;
+      background: #f59e0b;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #d97706;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎧 臺語發音測試</h1>
+
+  <!-- 單一播放 -->
+  <h2>基本播放</h2>
+  <audio controls>
+    <source src="1.m4a" type="audio/mp4">
+  </audio>
+
+  <hr>
+
+  <!-- 按鈕播放 -->
+  <h2>點擊播放</h2>
+
+  <button onclick="playAudio('1.m4a')">逐家好</button>
+  <button onclick="playAudio('2.m4a')">食飽未</button>
+  <button onclick="playAudio('3.m4a')">你好</button>
+  <button onclick="playAudio('4.m4a')">敖早</button>
+  <button onclick="playAudio('5.m4a')">歹勢</button>
+
+  <script>
+    function playAudio(file) {
+      const audio = new Audio(file);
+      audio.play();
+    }
+  </script>
+
+</body>
+</html>
