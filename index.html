@@ -1,22 +1,94 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>台語音檔播放器</title>
+<meta charset="UTF-8">
+<title>台語單字學習</title>
+
+<style>
+body {
+  font-family: Arial;
+  padding: 20px;
+  background: #f5f5f5;
+}
+
+.word {
+  display: inline-block;
+  padding: 12px 18px;
+  margin: 8px;
+  background: white;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.word:hover {
+  background: #e0f0ff;
+}
+</style>
 </head>
+
 <body>
 
-<h1>台語音檔測試</h1>
+<h1>台語單字點擊播放</h1>
 
-<button onclick="playSound('1.m4a')">播放 1</button>
-<button onclick="playSound('2.m4a')">播放 2</button>
-<button onclick="playSound('3.m4a')">播放 3</button>
+<div id="wordList"></div>
+<audio id="player"></audio>
 
 <script>
-function playSound(file) {
-  const audio = new Audio(file);
-  audio.play();
+
+// 🔥 直接貼你的資料（只留 kanji 就好）
+const TAIWANESE_DATA = [
+  { kanji: "逐家好" },
+  { kanji: "食飽未" },
+  { kanji: "你好" },
+  { kanji: "敖早" },
+  { kanji: "蜀" },
+  { kanji: "兩" },
+  { kanji: "三" },
+  { kanji: "四" },
+  { kanji: "五" },
+  { kanji: "六" },
+  { kanji: "七" },
+  { kanji: "八" },
+  { kanji: "九" },
+  { kanji: "十" },
+  { kanji: "百" },
+  { kanji: "千" },
+  { kanji: "歹勢" },
+  { kanji: "努力" },
+  { kanji: "趣味" },
+  { kanji: "佳哉" },
+  { kanji: "知影" }
+];
+
+// 👉 產生 UI
+const container = document.getElementById("wordList");
+
+TAIWANESE_DATA.forEach(item => {
+  const word = item.kanji;
+
+  const div = document.createElement("div");
+  div.className = "word";
+  div.innerText = word;
+
+  div.onclick = () => playWord(word);
+
+  container.appendChild(div);
+});
+
+// 👉 播放
+function playWord(word) {
+  const player = document.getElementById("player");
+
+  // 自動對應檔名
+  const file = word + ".m4a";
+
+  player.src = file;
+  player.play().catch(() => {
+    alert("找不到音檔：" + file);
+  });
 }
+
 </script>
 
 </body>
